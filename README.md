@@ -1,13 +1,19 @@
 <h1> Projeto P2 Java </h1>
 
-projeto feito com base nas opções de temas disponibilizado pelo professor no link:<br>
+<h2>Instruções</h2>
+
+Instruções de entregas, oque será entregue ou o que deverá estar sendo feito estão no link a seguir:<br><br>
+https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.1-projeto-pratico.md
+
+<h2>Tema</h2>
+projeto feito com base nas opções de temas disponibilizado pelo professor no link:<br><br>
 https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.2-proposals.md
 
 nossa tema sendo o de: <b></b>
 
 instruções de como a estrutura da API deve ser organizada está também na pagina dos temas!
 
-<h2>Periodo no caso eu (Mateus) não vou poder estar 100% com foco nesse trabalho até quinta-feira (10/10/2024)</h2>
+Periodo no caso eu (Mateus) não vou poder estar 100% com foco nesse trabalho até quinta-feira (10/10/2024)
 Peço que me auxiliem nesse periodo
 
 <h2 align="left">🖌️ Autores </h2>
