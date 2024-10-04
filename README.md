@@ -7,8 +7,8 @@ https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03
 
 <h2>Tema</h2>
 Projeto feito com base nas opções de temas disponibilizado pelo professor no link:<br><br>
-https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.2-proposals.md <br>
-Nossa tema sendo o de: <b></b>
+https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.2-proposals.md
+<br>Nossa tema sendo o de: <b></b>
 
 Instruções de como a estrutura da API deve ser organizada está também na pagina dos temas!
 
