@@ -1,6 +1,6 @@
 <h1> Projeto P2 Java </h1>
 
-projeto feito com base nas opções de temas disponibilizado pelo professor no link:
+projeto feito com base nas opções de temas disponibilizado pelo professor no link:<br>
 https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.2-proposals.md
 
 nossa tema sendo o de: <b></b>
