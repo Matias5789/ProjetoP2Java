@@ -10,9 +10,9 @@ https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03
 https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.2-proposals.md</p>
 <br><p>Nossa tema sendo o de: <b></b></p>
 
-Instruções de como a estrutura da API deve ser organizada está também na pagina dos temas!
+<p>Instruções de como a estrutura da API deve ser organizada está também na pagina dos temas!</p>
 
-Periodo em que eu (Mateus) não vou poder estar 100% com foco nesse trabalho, até essa quinta-feira (10/10/2024). Peço que me auxiliem nesse periodo
+<p>Periodo em que eu (Mateus) não vou poder estar 100% com foco nesse trabalho, até essa quinta-feira (10/10/2024). Peço que me auxiliem nesse periodo</p>
 
 <h2 align="left">🖌️ Autores </h2>
 
