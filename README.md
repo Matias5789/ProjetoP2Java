@@ -3,7 +3,12 @@
 projeto feito com base nas opções de temas disponibilizado pelo professor no link:
 https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.2-proposals.md
 
-nossa tema sendo o de: <b>Biblioteca</b>
+nossa tema sendo o de: <b></b>
+
+instruções de como a estrutura da API deve ser organizada está também na pagina dos temas!
+
+<h2>Periodo no caso eu (Mateus) não vou poder estar 100% com foco nesse trabalho até quinta-feira (10/10/2024)</h2>
+Peço que me auxiliem nesse periodo
 
 <h2 align="left">🖌️ Autores </h2>
 
