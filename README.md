@@ -2,13 +2,13 @@
 
 <h2>Instruções sobre o projeto em geral</h2>
 
-Instruções de entregas, oque será entregue ou o que deverá estar sendo feito estão no link a seguir:<br><br>
-https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.1-projeto-pratico.md
+<p>Instruções de entregas, oque será entregue ou o que deverá estar sendo feito estão no link a seguir:<br><br>
+https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.1-projeto-pratico.md</p>
 
 <h2>Tema</h2>
-Projeto feito com base nas opções de temas disponibilizado pelo professor no link:<br><br>
-https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.2-proposals.md
-<br>Nossa tema sendo o de: <b></b>
+<p></p>Projeto feito com base nas opções de temas disponibilizado pelo professor no link:<br><br>
+https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03.2-proposals.md</p>
+<br><p>Nossa tema sendo o de: <b></b></p>
 
 Instruções de como a estrutura da API deve ser organizada está também na pagina dos temas!
 
