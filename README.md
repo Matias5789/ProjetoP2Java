@@ -13,8 +13,7 @@ Nossa tema sendo o de: <b></b>
 
 Instruções de como a estrutura da API deve ser organizada está também na pagina dos temas!
 
-Periodo no caso eu (Mateus) não vou poder estar 100% com foco nesse trabalho até quinta-feira (10/10/2024)
-Peço que me auxiliem nesse periodo
+Periodo em que eu (Mateus) não vou poder estar 100% com foco nesse trabalho, até essa quinta-feira (10/10/2024). Peço que me auxiliem nesse periodo
 
 <h2 align="left">🖌️ Autores </h2>
 
