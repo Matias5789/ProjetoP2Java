@@ -17,67 +17,67 @@ https://github.com/diegoneri/aulas-ds-spring-boot/blob/main/content/exercises/03
 
 <h3>/api/customers</h3>
 <p>
-GET
-Encontre um cliente utilizando seu id
-Encontre um cliente utilizando seu nome
-Encontre um cliente utilizando a data de nascimento
-POST - Criar um novo cliente
-DELETE - Excluir um cliente, desde que não possua empréstimos
-PUT - Atualizar os dados de um cliente, exceto seu status
-PATCH - Atualizar o status do cliente (ativo / inativo)
+GET<br>
+Encontre um cliente utilizando seu id<br>
+Encontre um cliente utilizando seu nome<br>
+Encontre um cliente utilizando a data de nascimento<br>
+POST - Criar um novo cliente<br>
+DELETE - Excluir um cliente, desde que não possua empréstimos<br>
+PUT - Atualizar os dados de um cliente, exceto seu status<br>
+PATCH - Atualizar o status do cliente (ativo / inativo)<br>
 </p><br>
 <h3>/api/loans</h3>
 <p>
-GET
-Encontre os empréstimos de um cliente a partir do cliente
-Encontre os empréstimos de um período de tempo
-POST
-Criar um novo empréstimo.
-Dois livros podem ser emprestados por vez.
-Um cliente não pode ter mais de um empréstimo simultâneo
-Atualizar o status dos livros para BORROWED
-PATCH
-Prorrogar o empréstimo do aluno
-Finalizar o empréstimo, atualizando o status dos livros para AVAILABLE
+GET<br>
+Encontre os empréstimos de um cliente a partir do cliente<br>
+Encontre os empréstimos de um período de tempo<br>
+POST<br>
+Criar um novo empréstimo.<br>
+Dois livros podem ser emprestados por vez.<br>
+Um cliente não pode ter mais de um empréstimo simultâneo<br>
+Atualizar o status dos livros para BORROWED<br>
+PATCH<br>
+Prorrogar o empréstimo do aluno<br>
+Finalizar o empréstimo, atualizando o status dos livros para AVAILABLE<br>
 </p><br>
 <h3>/api/books</h3>
 <p>
-GET - Para obter todos os livros ou detalhes de um livro por id.
-POST - Criar um novo livro
-DELETE - Inativar um livro
-PUT - Atualizar os dados de um livro (exceto status)
-PATCH - Atualizar o status do livro
+GET - Para obter todos os livros ou detalhes de um livro por id.<br>
+POST - Criar um novo livro<br>
+DELETE - Inativar um livro<br>
+PUT - Atualizar os dados de um livro (exceto status)<br>
+PATCH - Atualizar o status do livro<br>
 </p><br>
 <h3>Campos</h3>
 <p>
-Customer
-id (Long)
-name (String)
-lastname (String)
-address (String)
-city (String)
-state (BigDecimal)
-country (String)
-birthDate (LocalDate)
+Customer<br>
+id (Long)<br>
+name (String)<br>
+lastname (String)<br>
+address (String)<br>
+city (String)<br>
+state (BigDecimal)<br>
+country (String)<br>
+birthDate (LocalDate)<br>
 </p><br>
 <p>
-Book
-id (Long)
-title (String)
-author (String)
-isbn (String)
-publishedDate (LocalDate)
-status (Enum [AVAILABLE, BORROWED])
+Book<br>
+id (Long)<br>
+title (String)<br>
+author (String)<br>
+isbn (String)<br>
+publishedDate (LocalDate)<br>
+status (Enum [AVAILABLE, BORROWED])<br>
 </p><br>
 <p>
-Loan
-id (Long)
-customer (Customer)
-books (List)
-author (String)
-isbn (String)
-publishedDate (LocalDate)
-status (Enum [AVAILABLE, BORROWED])
+Loan<br>
+id (Long)<br>
+customer (Customer)<br>
+books (List)<br>
+author (String)<br>
+isbn (String)<br>
+publishedDate (LocalDate)<br>
+status (Enum [AVAILABLE, BORROWED])<br>
 </p><br>
 </p>
 
