@@ -68,7 +68,7 @@ author (String)<br>
 isbn (String)<br>
 publishedDate (LocalDate)<br>
 status (Enum [AVAILABLE, BORROWED])<br>
-</p><br>
+</p>
 <p>
 Loan<br>
 id (Long)<br>
