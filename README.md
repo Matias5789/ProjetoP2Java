@@ -25,7 +25,7 @@ POST - Criar um novo cliente<br>
 DELETE - Excluir um cliente, desde que não possua empréstimos<br>
 PUT - Atualizar os dados de um cliente, exceto seu status<br>
 PATCH - Atualizar o status do cliente (ativo / inativo)<br>
-</p><br>
+</p>
 <h3>/api/loans</h3>
 <p>
 GET<br>
@@ -39,7 +39,7 @@ Atualizar o status dos livros para BORROWED<br>
 PATCH<br>
 Prorrogar o empréstimo do aluno<br>
 Finalizar o empréstimo, atualizando o status dos livros para AVAILABLE<br>
-</p><br>
+</p>
 <h3>/api/books</h3>
 <p>
 GET - Para obter todos os livros ou detalhes de um livro por id.<br>
@@ -59,7 +59,7 @@ city (String)<br>
 state (BigDecimal)<br>
 country (String)<br>
 birthDate (LocalDate)<br>
-</p><br>
+</p>
 <p>
 Book<br>
 id (Long)<br>
@@ -78,7 +78,7 @@ author (String)<br>
 isbn (String)<br>
 publishedDate (LocalDate)<br>
 status (Enum [AVAILABLE, BORROWED])<br>
-</p><br>
+</p>
 </p>
 
 <p>Periodo em que eu (Mateus) não vou poder estar 100% com foco nesse trabalho, até essa quinta-feira (10/10/2024). Peço que me auxiliem nesse periodo</p>
