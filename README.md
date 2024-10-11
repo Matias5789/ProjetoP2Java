@@ -47,7 +47,7 @@ POST - Criar um novo livro<br>
 DELETE - Inativar um livro<br>
 PUT - Atualizar os dados de um livro (exceto status)<br>
 PATCH - Atualizar o status do livro<br>
-</p><br>
+</p>
 <h3>Campos</h3>
 <p>
 Customer<br>
