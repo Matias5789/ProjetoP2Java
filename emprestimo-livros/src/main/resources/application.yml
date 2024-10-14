@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: contacorrente
+
+server:
+  servlet:
+     contextPath: /api
+  port: 8090
