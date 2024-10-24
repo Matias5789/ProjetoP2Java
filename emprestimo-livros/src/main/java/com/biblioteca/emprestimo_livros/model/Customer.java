@@ -13,8 +13,8 @@ public class Customer implements Serializable {
     private BigDecimal state;
     private String country;
     private LocalDate birthDate;
+    private CustomerStatus status;
 
-    
     public Long getId() {
         return id;
     }
@@ -64,6 +64,13 @@ public class Customer implements Serializable {
         this.birthDate = birthDate;
     }
 
+    public CustomerStatus getStatus() {
+        return status;
+    }
+    public void setStatus(CustomerStatus status) {
+        this.status = status;
+    }
+    
     @Override
     public int hashCode() {
         final int prime = 31;
