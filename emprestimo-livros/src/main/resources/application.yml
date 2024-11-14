@@ -1,8 +1,31 @@
 spring:
   application:
-    name: contacorrente
+    name: livraria
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/seu_banco_de_dados
+    username: seu_usuario
+    password: sua_senha
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 
 server:
   servlet:
-     contextPath: /api
+    contextPath: /api
   port: 8090
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql: TRACE
