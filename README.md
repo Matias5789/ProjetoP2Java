@@ -1,5 +1,8 @@
 <h1> Projeto P2 Java </h1>
 
+<h2>Swagger para testar</h2>
+<p>http://localhost:8090/api/swagger-ui/index.html</p>
+
 <h2>Instruções sobre o projeto em geral</h2>
 
 <p>Instruções de entregas, oque será entregue ou o que deverá estar sendo feito estão no link a seguir:<br><br>
