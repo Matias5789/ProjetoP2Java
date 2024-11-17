@@ -1,5 +1,6 @@
 package com.biblioteca.emprestimo_livros.controller;
 
+import com.biblioteca.emprestimo_livros.DTO.LoanRequestDTO;
 import com.biblioteca.emprestimo_livros.model.Loan;
 import com.biblioteca.emprestimo_livros.services.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +16,20 @@ public class LoanController {
     @Autowired
     private LoanService loanService;
 
-    @GetMapping("/customer/{customerId}")
-    public ResponseEntity<List<Loan>> getLoansByCustomer(@PathVariable Long customerId) {
-        return ResponseEntity.ok(loanService.findLoansByCustomer(customerId));
+    @GetMapping
+    public ResponseEntity<List<Loan>> getAllLoans() {
+        return ResponseEntity.ok(loanService.findAllLoans());
     }
 
-    @GetMapping("/date")
-    public ResponseEntity<List<Loan>> getLoansByDateRange(@RequestParam String startDate, @RequestParam String endDate) {
-        return ResponseEntity.ok(loanService.findLoansByDateRange(startDate, endDate));
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<List<Loan>> getLoansByCustomer(@PathVariable Long customerId) {
+        return ResponseEntity.ok(loanService.findLoansByCustomerId(customerId));
     }
 
     @PostMapping
-    public ResponseEntity<Loan> createLoan(@RequestBody Loan loan) {
-        return ResponseEntity.ok(loanService.createLoan(loan));
+    public ResponseEntity<Loan> createLoan(@RequestBody LoanRequestDTO loanRequestDTO) {
+        Loan loan = loanService.createLoan(loanRequestDTO);
+        return ResponseEntity.status(201).body(loan);
     }
 
     @PatchMapping("/{id}/extend")

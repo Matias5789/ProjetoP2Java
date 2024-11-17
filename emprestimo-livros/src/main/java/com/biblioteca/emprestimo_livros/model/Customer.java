@@ -4,15 +4,37 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Customer implements Serializable {
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(nullable = false)
     private String name;
+    
+    @Column(nullable = false)
     private String lastname;
+    
     private String adress;
     private String city;
+    
+    @Column(precision = 10, scale = 2) // Precision e scale para o BigDecimal
     private BigDecimal state;
+    
     private String country;
+    
     private LocalDate birthDate;
+    
+    @Enumerated(EnumType.STRING)
     private CustomerStatus status;
 
     public Long getId() {

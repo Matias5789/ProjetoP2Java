@@ -3,9 +3,9 @@ spring:
     name: livraria
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/seu_banco_de_dados
-    username: seu_usuario
-    password: sua_senha
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: 1234
     driver-class-name: org.postgresql.Driver
 
   jpa:
