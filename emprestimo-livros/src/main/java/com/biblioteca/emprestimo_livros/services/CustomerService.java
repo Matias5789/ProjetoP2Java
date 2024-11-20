@@ -46,9 +46,17 @@ public class CustomerService {
         customerRepository.deleteById(id);
     }
 
-    public Customer updateCustomer(Long id, Customer customer) {
-        customer.setId(id);
-        return customerRepository.save(customer);
+    public Customer updateCustomer(Long id, Customer customerRequest) {
+        Customer existingCustomer = customerRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
+        existingCustomer.setName(customerRequest.getName());
+        existingCustomer.setLastname(customerRequest.getLastname());
+        existingCustomer.setAdress(customerRequest.getAdress());
+        existingCustomer.setCity(customerRequest.getCity());
+        existingCustomer.setState(customerRequest.getState());
+        existingCustomer.setCountry(customerRequest.getCountry());
+        existingCustomer.setBirthDate(customerRequest.getBirthDate());
+        return customerRepository.save(existingCustomer);
     }
 
     public Customer updateCustomerStatus(Long id, CustomerStatus status) {

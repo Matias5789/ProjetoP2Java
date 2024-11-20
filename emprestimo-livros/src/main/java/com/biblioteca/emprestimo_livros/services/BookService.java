@@ -32,15 +32,20 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public Book updateBook(Long id, Book book) {
-        book.setId(id);
-        return bookRepository.save(book);
+    public Book updateBook(Long id, Book bookRequest) {
+        Book existingBook = bookRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Livro não encontrado"));
+        existingBook.setTitle(bookRequest.getTitle());
+        existingBook.setAuthor(bookRequest.getAuthor());
+        existingBook.setIsbn(bookRequest.getIsbn());
+        existingBook.setPublishedDate(bookRequest.getPublishedDate());
+        return bookRepository.save(existingBook);
     }
 
     public Book updateBookStatus(Long id, Status status) {
-    Book book = findById(id).orElseThrow(() -> new NoSuchElementException("Livro não encontrado com o ID: " + id));
-    book.setStatus(status);
-    return bookRepository.save(book);
-}
+        Book book = findById(id).orElseThrow(() -> new NoSuchElementException("Livro não encontrado com o ID: " + id));
+        book.setStatus(status);
+        return bookRepository.save(book);
+    }
 
 }

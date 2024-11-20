@@ -41,7 +41,7 @@ public class CustomerController {
         CustomerStatus customerStatus = CustomerStatus.valueOf(status.toUpperCase());
         return customerService.findCustomersByStatus(customerStatus);
     } catch (IllegalArgumentException e) {
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid status value: " + status);
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de status invalido: " + status);
     }
     }
 
@@ -69,8 +69,9 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
-        return ResponseEntity.ok(customerService.updateCustomer(id, customer));
+    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customerRequest) {
+        Customer updatedCustomer = customerService.updateCustomer(id, customerRequest);
+        return ResponseEntity.ok(updatedCustomer);
     }
 
     @PatchMapping("/{id}/status")

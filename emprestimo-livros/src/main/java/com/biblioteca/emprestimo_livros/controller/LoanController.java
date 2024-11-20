@@ -30,7 +30,7 @@ public class LoanController {
         @RequestParam @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
         @RequestParam @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
         List<LoanResponseDTO> loans = loanService.findLoansByCreationDateRange(startDate, endDate);
-        return ResponseEntity.ok(loans);  // Retorna a lista de LoanResponseDTO
+        return ResponseEntity.ok(loans);
     }
 
     @GetMapping("/{id}")
@@ -52,7 +52,7 @@ public class LoanController {
 
     @PatchMapping("/{id}/complete")
     public ResponseEntity<Loan> completeLoan(@PathVariable Long id) {
-        Loan loan = loanService.completeLoan(id);  // Passa apenas o id para o service
-        return ResponseEntity.ok(loan);  // Retorna o empréstimo atualizado
+        Loan loan = loanService.completeLoan(id);
+        return ResponseEntity.ok(loan);
     }
 }
