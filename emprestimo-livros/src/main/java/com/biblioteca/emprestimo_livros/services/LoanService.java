@@ -1,6 +1,8 @@
 package com.biblioteca.emprestimo_livros.services;
 
-import com.biblioteca.emprestimo_livros.DTO.LoanRequestDTO;
+import com.biblioteca.emprestimo_livros.dto.LoanRequestDTO;
+import com.biblioteca.emprestimo_livros.dto.LoanResponseDTO;
+import com.biblioteca.emprestimo_livros.mapper.LoanMapper;
 import com.biblioteca.emprestimo_livros.model.Book;
 import com.biblioteca.emprestimo_livros.model.Customer;
 import com.biblioteca.emprestimo_livros.model.Loan;
@@ -11,7 +13,9 @@ import com.biblioteca.emprestimo_livros.repositorys.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class LoanService {
@@ -20,70 +24,92 @@ public class LoanService {
     private LoanRepository loanRepository;
 
     @Autowired
-    private CustomerRepository CustomerRepository;  // Corrigido: variáveis de instância para repositórios
+    private CustomerRepository customerRepository;  // Corrigido: variáveis de instância para repositórios
 
     @Autowired
-    private BookRepository BookRepository;  // Corrigido: variáveis de instância para repositórios
+    private BookRepository bookRepository;  // Corrigido: variáveis de instância para repositórios
+
+    @Autowired
+    private LoanMapper loanMapper;
 
     public List<Loan> findAllLoans() {
         return loanRepository.findAllLoans();
     }
 
-    public List<Loan> findLoansByCustomerId(Long customerId) {
-        return loanRepository.findLoansByCustomerId(customerId);
+    public LoanResponseDTO findLoanById(Long id) {
+    Loan loan = loanRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Empréstimo não encontrado com o ID: " + id));
+    
+    return loanMapper.toLoanResponseDTO(loan);
     }
 
-    // Método para criar um empréstimo a partir de um DTO com os IDs dos livros e cliente
     public Loan createLoan(LoanRequestDTO loanRequest) {
-        // Busca o cliente pelo ID
-        Customer customer = CustomerRepository.findById(loanRequest.getCustomerId())
+        Customer customer = customerRepository.findById(loanRequest.getCustomerId())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
-        // Busca os livros pelos IDs
-        List<Book> books = BookRepository.findAllById(loanRequest.getBookIds());
+        List<Book> books = bookRepository.findAllById(loanRequest.getBookIds());
         if (books.isEmpty()) {
             throw new RuntimeException("Nenhum livro encontrado com os IDs fornecidos.");
         }
 
-        // Lógica para garantir que os livros estão disponíveis
         for (Book book : books) {
             if (book.getStatus() != Status.AVAILABLE) {
                 throw new RuntimeException("Livro " + book.getTitle() + " não está disponível.");
             }
         }
-
-        // Criação do empréstimo
         Loan loan = new Loan();
         loan.setCustomer(customer);
+        loan.setCreatedDate(LocalDate.now());
+        loan.setCompletedDate(loan.getCreatedDate().plusWeeks(2));
         loan.setBooks(books);
-
-        // Atualizar o status dos livros para "BORROWED"
         books.forEach(book -> book.setStatus(Status.BORROWED));
-        BookRepository.saveAll(books);  // Salvando as alterações no status dos livros
+        bookRepository.saveAll(books);
 
         if (!books.isEmpty()) {
-            // Assumindo que todos os livros têm os mesmos dados (caso contrário, use lógica mais complexa)
-            Book firstBook = books.get(0);  // Pegue o primeiro livro para preencher os dados
+            Book firstBook = books.get(0);
             loan.setAuthor(firstBook.getAuthor());
             loan.setIsbn(firstBook.getIsbn());
             loan.setPublishedDate(firstBook.getPublishedDate());
-            loan.setStatus(firstBook.getStatus());  // Supondo que você queira usar o status do primeiro livro
+            loan.setStatus(firstBook.getStatus());
         }
 
 
-        return loanRepository.save(loan);  // Salvando o empréstimo
+        return loanRepository.save(loan);
     }
 
-
     public Loan extendLoan(Long id) {
-        Loan loan = loanRepository.findById(id).orElseThrow();
-        // Lógica para prorrogar o empréstimo
+        Loan loan = loanRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Empréstimo não encontrado"));
+        if (loan.getStatus() != Status.BORROWED) {
+            throw new IllegalStateException("Somente empréstimos ativos podem ser estendidos.");
+        }
+        LocalDate newCompletedDate = loan.getCompletedDate().plusWeeks(1);
+        loan.setCompletedDate(newCompletedDate);
         return loanRepository.save(loan);
     }
 
     public Loan completeLoan(Long id) {
-        Loan loan = loanRepository.findById(id).orElseThrow();
-        // Lógica para completar o empréstimo e atualizar o status dos livros
+        Loan loan = loanRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Empréstimo não encontrado"));
+        if (loan.getStatus() != Status.BORROWED) {
+            throw new IllegalStateException("Somente empréstimos ativos podem ser completados.");
+        }
+        loan.setStatus(Status.AVAILABLE);
+        List<Book> books = loan.getBooks();
+        for (Book book : books) {
+            if (book.getStatus() != Status.BORROWED) {
+                throw new IllegalStateException("O livro com ID " + book.getId() + " não está emprestado.");
+            }
+            book.setStatus(Status.AVAILABLE);
+            bookRepository.save(book);
+        }
         return loanRepository.save(loan);
     }
+
+    public List<LoanResponseDTO> findLoansByCreationDateRange(LocalDate startDate, LocalDate endDate) {
+    List<Loan> loans = loanRepository.findLoansByCreationDateRange(startDate, endDate);
+    return loans.stream()
+                .map(loanMapper::toLoanResponseDTO)
+                .collect(Collectors.toList());
+}
 }

@@ -2,6 +2,7 @@ package com.biblioteca.emprestimo_livros.controller;
 
 import com.biblioteca.emprestimo_livros.model.Customer;
 import com.biblioteca.emprestimo_livros.model.CustomerStatus;
+import com.biblioteca.emprestimo_livros.model.Loan;
 import com.biblioteca.emprestimo_livros.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -34,14 +36,26 @@ public class CustomerController {
     }
 
     @GetMapping("/status/{status}")
-public List<Customer> getCustomerByStatus(@PathVariable("status") String status) {
+    public List<Customer> getCustomerByStatus(@PathVariable("status") String status) {
     try {
         CustomerStatus customerStatus = CustomerStatus.valueOf(status.toUpperCase());
         return customerService.findCustomersByStatus(customerStatus);
     } catch (IllegalArgumentException e) {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid status value: " + status);
     }
-}
+    }
+
+    @GetMapping("/birthdate/{birthDate}")
+        public ResponseEntity<Customer> getCustomerByBirthDate(@PathVariable LocalDate birthDate) {
+        Customer customer = customerService.findByBirthDate(birthDate);
+        return ResponseEntity.ok(customer);
+    }
+
+     @GetMapping("/{id}/loans")
+    public ResponseEntity<List<Loan>> getLoansByCustomerId(@PathVariable Long id) {
+        List<Loan> loans = customerService.getLoansByCustomerId(id);
+        return ResponseEntity.ok(loans);
+    }
 
     @PostMapping
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
